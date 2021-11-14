@@ -10,18 +10,18 @@ node{
   echo "JOB Name ${env.JOB_NAME}"
  */
   
-def mavenHome = tool name: "maven3.8.3"
+def mhd = tool name: "maven3.8.3"
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 
 
 
 stage('CheckOutCode'){
-git branch: 'development', credentialsId: '9aad10da-e742-413a-a2f6-ce6a8b007f70', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
 }
 
 stage('Build'){
-sh "${mavenHome}/bin/mvn clean package"
+sh "${mhd}/bin/mvn clean package"
 }
 /*
 stage('ExecuteSOnarQubeReport'){
@@ -33,8 +33,8 @@ sh "mvn deploy"
 }
 
 stage('DeployAppintoTomcatServer'){
-sshagent(['dd147e39-1f55-4554-9700-b10dc494211f']) {
-  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.201.155:/opt/apache-tomcat-9.0.54/webapps/"
+sshagent(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
+  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.120.39:8080:/opt/apache-tomcat-9.0.54/webapps/"
 }
 }
 
