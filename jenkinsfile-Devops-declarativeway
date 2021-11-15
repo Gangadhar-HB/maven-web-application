@@ -25,7 +25,7 @@ timestamps()
         }
         stage('DeployAppintoTomcatServer'){
             steps(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
-                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.120.39:/opt/apache-tomcat-9.0.54/webapps/"
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.148.40:/opt/apache-tomcat-9.0.54/webapps/"
         }
         }
     }
