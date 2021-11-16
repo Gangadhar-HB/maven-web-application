@@ -1,4 +1,4 @@
-node{
+node('Devops-node1'){
 
 
 echo "GitHub BranhName ${env.BRANCH_NAME}"
