@@ -18,7 +18,7 @@ stage('Build'){
 sh "${mhd}/bin/mvn clean package"
 }
 stage('ExecuteSOnarQubeReport'){
-sh "mvn  sonar:sonar"
+sh "${mhd}/bin/mvn  sonar:sonar"
 }
 stage("SonarQuality Gate check") {
 timeout(time: 1, unit: 'HOURS') {
