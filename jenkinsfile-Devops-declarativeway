@@ -27,12 +27,26 @@ pollSCM('* * * * *')
                 sh "mvn clean package"
         }
         }
-        /*
+        
         stage('genaratesonarqubereport') {
             steps {
                 sh "mvn sonar:sonar"
         }
         }
+        stage("SonarQuality Gate check") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                def qg = waitForQualityGate() 
+                if (qg.status != 'OK') {
+                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                else{
+                    print "Pipeline executes successfully: ${qg.status}"
+                }
+            }
+        }
+        }
+        }
+        */
         stage('DeployAppintoTomcatServer'){
             steps(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
                 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.148.40:/opt/apache-tomcat-9.0.54/webapps/"
