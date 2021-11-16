@@ -17,11 +17,21 @@ git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795'
 stage('Build'){
 sh "${mhd}/bin/mvn clean package"
 }
-/*
 stage('ExecuteSOnarQubeReport'){
 sh "mvn  sonar:sonar"
 }
-
+stage("SonarQuality Gate check") {
+timeout(time: 1, unit: 'HOURS') {
+def qg = waitForQualityGate() 
+if (qg.status != 'OK') {
+error "Pipeline aborted due to quality gate failure: ${qg.status}"
+}
+else{
+print "Pipeline executes successfully: ${qg.status}"
+}
+}
+}
+ /*
 stage('UploadArtifactsIntoNexusRepo'){
 sh "mvn deploy"
 }
