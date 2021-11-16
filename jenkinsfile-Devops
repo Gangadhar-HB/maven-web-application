@@ -1,0 +1,50 @@
+node{
+
+
+echo "GitHub BranhName ${env.BRANCH_NAME}"
+echo "Jenkins Job Number ${env.BUILD_NUMBER}"
+echo "Jenkins Node Name ${env.NODE_NAME}"
+echo "Jenkins Home ${env.JENKINS_HOME}"
+echo "Jenkins URL ${env.JENKINS_URL}"
+echo "JOB Name ${env.JOB_NAME}"
+  
+def mhd = tool name: "maven-3.8.3"
+
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+
+
+
+stage('CheckOutCode'){
+git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
+}
+
+stage('Build'){
+sh "${mhd}/bin/mvn clean package"
+}
+/*
+stage('ExecuteSOnarQubeReport'){
+sh "mvn  sonar:sonar"
+}
+
+stage('UploadArtifactsIntoNexusRepo'){
+sh "mvn deploy"
+}
+
+stage('DeployAppintoTomcatServer'){
+sshagent(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
+  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.120.39:8080:/opt/apache-tomcat-9.0.54/webapps/"
+}
+}
+
+stage('SendEmailNotification'){
+
+mail bcc: '', body: '''Build Over..
+
+Regards,
+Mithun Software Solutions,
+9980923226''', cc: 'devopstrainingblr@gmail.com', from: '', replyTo: '', subject: 'Build over!...', to: 'devopstrainingblr@gmail.com'
+}
+
+*/
+
+}
