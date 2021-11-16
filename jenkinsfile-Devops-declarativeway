@@ -9,7 +9,7 @@ timestamps()
 //Discard old builds... and keep only last 5 builds
 buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
 //poll scm
-pipelineTriggers([pollSCM('* * * * *')])
+pollSCM('* * * * *')
 }
     stages {
         stage('sourcecode') {
