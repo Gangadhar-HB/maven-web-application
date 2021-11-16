@@ -5,6 +5,7 @@ maven "maven-3.8.3"
 }
 options{
 timestamps()
+cleanWS()
 }
     stages {
         stage('sourcecode') {
