@@ -17,7 +17,7 @@ git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795'
 stage('Build'){
 sh "${mhd}/bin/mvn clean package"
 }
-stage('ExecuteSOnarQubeReport'){
+withSonarQubeEnv('ExecuteSOnarQubeReport'){
 sh "${mhd}/bin/mvn  sonar:sonar"
 }
 stage("SonarQuality Gate check") {
