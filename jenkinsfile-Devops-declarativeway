@@ -18,7 +18,7 @@ pollSCM('* * * * *')
     stages {
         stage('sourcecode') {
             steps {
-                git branch: 'master', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
+                git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
         }
         }
         
