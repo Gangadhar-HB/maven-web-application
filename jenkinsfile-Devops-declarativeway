@@ -27,7 +27,6 @@ pollSCM('* * * * *')
                 sh "mvn clean package"
         }
         }
-        /*
         stage('genaratesonarqubereport') {
             steps {
                 sh "mvn sonar:sonar"
@@ -39,6 +38,6 @@ pollSCM('* * * * *')
                 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.148.40:/opt/apache-tomcat-9.0.54/webapps/"
         }
         }
-        */
+        
     }
 }
