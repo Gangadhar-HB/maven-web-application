@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+tools{
+maven "maven-3.8.4"
+}
+options{
+//add time stamp to output
+timestamps()
+//Discard old builds... and keep only last 5 builds
+buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
+}
+/*
+triggers{
+//poll scm
+pollSCM('* * * * *')
+}
+*/
+    stages {
+        stage('sourcecode') {
+            steps {
+                git branch: 'master', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
+        }
+        }
+        
+        stage('build') {
+            steps {
+                sh "mvn clean package"
+        }
+        }
+        stage('genaratesonarqubereport') {
+            steps {
+                sh "mvn sonar:sonar"
+        }
+        }
+        /*
+        stage('uploadartifactsintonexus') {
+            steps {
+                sh "mvn deploy"
+        }
+        }
+        */
+         stage('DeployAppintoTomcatServer'){
+          steps {
+           sshagent(['27eed5ba-1b81-4880-a07b-57fd23fecabc']) {
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.138.155.99:/opt/apache-tomcat-9.0.55/webapps/"
+        }
+        }
+        }
+     
+        
+    }
+}
