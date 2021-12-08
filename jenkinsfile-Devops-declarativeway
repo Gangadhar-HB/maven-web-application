@@ -46,6 +46,12 @@ pollSCM('* * * * *')
         }
         }
         }
+        
+        stage('configure_Ansible') {
+          steps {
+            sh " ansible appserver -m ping"
+         }
+         }
      
         
     }
