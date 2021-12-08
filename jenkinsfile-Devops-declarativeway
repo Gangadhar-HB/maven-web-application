@@ -32,12 +32,13 @@ pollSCM('* * * * *')
                 sh "mvn sonar:sonar"
         }
         }
+        /*
         stage('uploadartifactsintonexus') {
             steps {
                 sh "mvn deploy"
         }
         }
-        
+        */
          stage('DeployAppintoTomcatServer'){
             steps(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
                 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.138.155.99:/opt/apache-tomcat-9.0.54/webapps/"
