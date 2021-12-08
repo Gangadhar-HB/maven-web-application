@@ -49,7 +49,7 @@ pollSCM('* * * * *')
         
         stage('configure_Ansible') {
           steps {
-            sh " ansible appserver -m ping"
+            sh " ansible appServer -m ping"
          }
          }
      
