@@ -32,13 +32,13 @@ pollSCM('* * * * *')
                 sh "mvn sonar:sonar"
         }
         }
-        /*
+        
         stage('uploadartifactsintonexus') {
             steps {
                 sh "mvn deploy"
         }
         }
-        */
+        
          stage('DeployAppintoTomcatServer'){
           steps {
            sshagent(['27eed5ba-1b81-4880-a07b-57fd23fecabc']) {
