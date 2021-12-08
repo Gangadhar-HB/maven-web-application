@@ -19,11 +19,11 @@ sh "${mhd}/bin/mvn clean package"
 }
 
 stage('ExecuteSOnarQubeReport'){
-sh "mvn  sonar:sonar"
+sh "${mhd}/bin/mvn  sonar:sonar"
 }
 
 stage('UploadArtifactsIntoNexusRepo'){
-sh "mvn deploy"
+sh "${mhd}/bin/mvn deploy"
 }
 
 stage('DeployAppintoTomcatServer'){
