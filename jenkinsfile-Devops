@@ -8,7 +8,7 @@ echo "Jenkins Home ${env.JENKINS_HOME}"
 echo "Jenkins URL ${env.JENKINS_URL}"
 echo "JOB Name ${env.JOB_NAME}"
   
-def mhd = tool name: "maven-3.8.3"
+def mhd = tool name: "maven-3.8.4"
 
 stage('CheckOutCode'){
 git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
@@ -17,7 +17,7 @@ git branch: 'development', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795'
 stage('Build'){
 sh "${mhd}/bin/mvn clean package"
 }
-/*
+
 stage('ExecuteSOnarQubeReport'){
 sh "mvn  sonar:sonar"
 }
@@ -31,7 +31,7 @@ sshagent(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
   sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.120.39:8080:/opt/apache-tomcat-9.0.54/webapps/"
 }
 }
-
+/*
 stage('SendEmailNotification'){
 
 mail bcc: '', body: '''Build Over..
