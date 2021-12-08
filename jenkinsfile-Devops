@@ -27,20 +27,10 @@ sh "mvn deploy"
 }
 
 stage('DeployAppintoTomcatServer'){
-sshagent(['39f54c13-6abd-408a-85d2-14818afc3cc4']) {
-  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.120.39:8080:/opt/apache-tomcat-9.0.54/webapps/"
+sshagent(['27eed5ba-1b81-4880-a07b-57fd23fecabc']) {
+     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.140.238.83:/opt/apache-tomcat-9.0.55/webapps/"
 }
 }
-/*
-stage('SendEmailNotification'){
 
-mail bcc: '', body: '''Build Over..
-
-Regards,
-Mithun Software Solutions,
-9980923226''', cc: 'devopstrainingblr@gmail.com', from: '', replyTo: '', subject: 'Build over!...', to: 'devopstrainingblr@gmail.com'
-}
-
-*/
 
 }
