@@ -41,7 +41,7 @@ pollSCM('* * * * *')
         */
          stage('DeployAppintoTomcatServer'){
             steps(['27eed5ba-1b81-4880-a07b-57fd23fecabc']) {
-                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.138.155.99:/opt/apache-tomcat-9.0.54/webapps/"
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.138.155.99:/opt/apache-tomcat-9.0.55/webapps/"
         }
         }
      
