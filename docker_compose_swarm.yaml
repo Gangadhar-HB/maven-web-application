@@ -1,10 +1,9 @@
 node {
-    /*
-    stage("connettogithub"){
-        git credentialsId: 'c19450a8-3454-4205-952e-63051608881e', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
+    
+    stage('CheckOutCode'){
+      git branch: 'master', credentialsId: '9516e48a-f325-4b5d-b4e7-53d8689cd795', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
     }
-    */
-    stage("git clone"){
-        git url: 'https://github.com/MithunTechnologiesDevOps/java-web-app-docker.git',branch: 'master'
-    }
-}
+    
+  }
+
+    
