@@ -1,0 +1,6 @@
+node {
+    
+    stage("connettogithub"){
+        git credentialsId: 'c19450a8-3454-4205-952e-63051608881e', url: 'https://github.com/Gangadhar-HB/maven-web-application.git'
+    }
+}
