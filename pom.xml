@@ -21,8 +21,9 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://3.133.113.105:9000/</sonar.host.url>
-		<sonar.login>6067f64f87b23dca5ae9c3e63e683d1000b3c591</sonar.login>
+		<sonar.host.url>http://sonarqube.tech-active.com/</sonar.host.url>
+		<sonar.username>admin</sonar.username>
+		<sonar.password>Active.123!!</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -97,7 +98,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Releases Nexus Repository</name>
-	      <url>http://18.119.121.95:8081/repository/maven-releases/</url>
+	      <url>http://nexus.tech-active.com/repository/webappdeploy/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
