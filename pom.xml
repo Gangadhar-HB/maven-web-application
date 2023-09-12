@@ -104,7 +104,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Snapshot Nexus Repository </name>
-	      <url>http://18.119.121.95:8081/repository/maven-snapshots/</url>
+	      <url>http://nexus.tech-active.com/repository/webappdeploy/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
