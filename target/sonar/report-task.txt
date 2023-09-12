@@ -1,0 +1,6 @@
+projectKey=com.mt:maven-web-application
+serverUrl=http://sonarqube.tech-active.com
+serverVersion=10.1.0.73491
+dashboardUrl=http://sonarqube.tech-active.com/dashboard?id=com.mt%3Amaven-web-application
+ceTaskId=AYqIO0m9Mrg9TA9wQsd6
+ceTaskUrl=http://sonarqube.tech-active.com/api/ce/task?id=AYqIO0m9Mrg9TA9wQsd6
